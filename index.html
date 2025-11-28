@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neurodiversidade - Site Inclusivo</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Pular para conteúdo principal (acessibilidade) -->
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+
+    <!-- Painel de Acessibilidade Melhorado -->
+    <div id="accessibility-panel" class="accessibility-panel">
+        <button id="accessibility-toggle" class="accessibility-toggle" aria-label="Abrir painel de acessibilidade" aria-expanded="false">
+            <span class="icon" aria-hidden="true">♿</span>
+            <span class="sr-only">Configurações de acessibilidade</span>
+        </button>
+        <div class="accessibility-options" aria-labelledby="accessibility-panel-title">
+            <h3 id="accessibility-panel-title">Configurações de Acessibilidade</h3>
+            
+            <div class="option-group">
+                <label for="font-size">Tamanho do texto:</label>
+                <div class="font-controls">
+                    <button id="decrease-font" aria-label="Diminuir tamanho da fonte">A-</button>
+                    <span id="current-font-size" aria-live="polite">100%</span>
+                    <button id="increase-font" aria-label="Aumentar tamanho da fonte">A+</button>
+                </div>
+            </div>
+            
+            <div class="option-group">
+                <label for="theme-selector">Tema:</label>
+                <select id="theme-selector" aria-describedby="theme-description">
+                    <option value="light">Claro</option>
+                    <option value="dark">Escuro</option>
+                    <option value="high-contrast">Alto Contraste</option>
+                    <option value="sepia">Sépia</option>
+                </select>
+                <span id="theme-description" class="option-description">Escolha um esquema de cores confortável</span>
+            </div>
+            
+            <div class="option-group">
+                <label for="font-selector">Fonte:</label>
+                <select id="font-selector" aria-describedby="font-description">
+                    <option value="open-sans">Open Sans (Padrão)</option>
+                    <option value="arial">Arial</option>
+                    <option value="verdana">Verdana</option>
+                    <option value="comic-neue">Comic Neue</option>
+                </select>
+                <span id="font-description" class="option-description">Escolha uma fonte mais legível</span>
+            </div>
+            
+            <div class="option-group">
+                <label for="line-spacing">Espaçamento entre linhas:</label>
+                <select id="line-spacing" aria-describedby="spacing-description">
+                    <option value="normal">Normal</option>
+                    <option value="wide">Amplo</option>
+                    <option value="extra-wide">Extra Amplo</option>
+                </select>
+                <span id="spacing-description" class="option-description">Aumente o espaçamento para facilitar a leitura</span>
+            </div>
+            
+            <div class="option-group toggle-group">
+                <span class="toggle-label">Animação:</span>
+                <button id="animation-toggle" class="toggle-button" aria-pressed="false">
+                    <span class="toggle-state">Desativar</span>
+                </button>
+            </div>
+            
+            <div class="option-group toggle-group">
+                <span class="toggle-label">Modo Leitura:</span>
+                <button id="reading-mode" class="toggle-button" aria-pressed="false">
+                    <span class="toggle-state">Ativar</span>
+                </button>
+            </div>
+            
+            <div class="option-group toggle-group">
+                <span class="toggle-label">Máscara de Leitura:</span>
+                <button id="reading-mask" class="toggle-button" aria-pressed="false">
+                    <span class="toggle-state">Ativar</span>
+                </button>
+            </div>
+            
+            <div class="option-group toggle-group">
+                <span class="toggle-label">Leitura em Voz Alta:</span>
+                <button id="text-to-speech" class="toggle-button" aria-pressed="false">
+                    <span class="toggle-state">Ativar</span>
+                </button>
+            </div>
+            
+            <div class="option-group">
+                <button id="reset-settings" class="secondary-button">Redefinir Configurações</button>
+            </div>
+
+            <!-- Instrução de rolagem para acessibilidade -->
+            <div class="option-group" style="margin-top: var(--space-xl); padding-top: var(--space-md); border-top: 1px solid var(--border-color);">
+                <p class="option-description" style="text-align: center; font-style: italic;">
+                    💡 Use a rolagem para ver todas as opções disponíveis
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Barra de Navegação -->
+    <header>
+        <nav class="navbar" role="navigation" aria-label="Navegação principal">
+            <div class="nav-container">
+                <a href="#home" class="nav-logo">
+                    <span class="logo-icon" aria-hidden="true">🧠</span>
+                    Neurodiversidade
+                </a>
+                <button id="menu-toggle" class="menu-toggle" aria-expanded="false" aria-controls="main-menu" aria-label="Abrir menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+                <ul id="main-menu" class="nav-menu">
+                    <li class="nav-item"><a href="#home" class="nav-link">Início</a></li>
+                    <li class="nav-item"><a href="#neurodiversity" class="nav-link">Neurodiversidade</a></li>
+                    <li class="nav-item"><a href="#autism" class="nav-link">Autismo</a></li>
+                    <li class="nav-item"><a href="#adhd" class="nav-link">TDAH</a></li>
+                    <li class="nav-item"><a href="#other-conditions" class="nav-link">Outras Condições</a></li>
+                    <li class="nav-item"><a href="#resources" class="nav-link">Recursos</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main id="main-content">
+        <!-- Seção Inicial -->
+        <section id="home" class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Bem-vindo ao Site Inclusivo sobre Neurodivergências</h1>
+                    <p>Um espaço seguro para aprender sobre neurodiversidade, autismo, TDAH e outras condições de forma acessível e respeitosa.</p>
+                    <div class="stats" aria-label="Estatística sobre neurodiversidade">
+                        <p>Estimativas sugerem que cerca de <strong>15–20% da população mundial</strong> é neurodivergente.</p>
+                    </div>
+                    <div class="hero-actions">
+                        <a href="#neurodiversity" class="cta-button">Saiba Mais</a>
+                        <button id="play-intro" class="secondary-button" aria-label="Ouvir introdução do site">
+                            <span class="button-icon" aria-hidden="true">🔊</span>
+                            Ouvir Introdução
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-visual" aria-hidden="true">
+                    <div class="visual-element brain-icon">🧠</div>
+                    <div class="visual-element diversity-icon">🌈</div>
+                    <div class="visual-element inclusion-icon">❤️</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Neurodiversidade -->
+        <section id="neurodiversity" class="content-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>O que é Neurodiversidade?</h2>
+                    <div class="section-actions">
+                        <button class="section-read-aloud" aria-label="Ler esta seção em voz alta">🔊 Ler</button>
+                    </div>
+                </div>
+                <p>Neurodiversidade é a variação natural do cérebro humano. Em vez de encarar diferenças como "defeitos", o conceito valoriza a diversidade cognitiva humana.</p>
+                
+                <div class="info-card">
+                    <h3>Condições Incluídas na Neurodiversidade</h3>
+                    <ul class="condition-list">
+                        <li class="condition-item">
+                            <span class="condition-icon" aria-hidden="true">🌟</span>
+                            Transtorno do Espectro Autista (TEA)
+                        </li>
+                        <li class="condition-item">
+                            <span class="condition-icon" aria-hidden="true">⚡</span>
+                            Transtorno de Déficit de Atenção/Hiperatividade (TDAH)
+                        </li>
+                        <li class="condition-item">
+                            <span class="condition-icon" aria-hidden="true">📖</span>
+                            Dislexia
+                        </li>
+                        <li class="condition-item">
+                            <span class="condition-icon" aria-hidden="true">🤲</span>
+                            Dispráxia
+                        </li>
+                        <li class="condition-item">
+                            <span class="condition-icon" aria-hidden="true">👂</span>
+                            Transtorno do Processamento Sensorial
+                        </li>
+                        <li class="condition-item">
+                            <span class="condition-icon" aria-hidden="true">💫</span>
+                            Tourette
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="highlight-box">
+                    <p>Cada condição neurodivergente traz talentos e desafios próprios. Valorizar essas diferenças beneficia toda a sociedade.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Autismo -->
+        <section id="autism" class="content-section alt-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Autismo (TEA)</h2>
+                    <div class="section-actions">
+                        <button class="section-read-aloud" aria-label="Ler esta seção em voz alta">🔊 Ler</button>
+                    </div>
+                </div>
+                <p>Pessoas autistas podem ter diferentes formas de processamento sensorial, comunicação e interação social.</p>
+                
+                <div class="two-columns">
+                    <div class="column">
+                        <h3>Características Comuns</h3>
+                        <ul>
+                            <li>Hipersensibilidades sensoriais (som, luz, texturas)</li>
+                            <li>Preferência por rotinas claras e previsibilidade</li>
+                            <li>Interesses intensos e focados</li>
+                            <li>Formas únicas de comunicação e expressão</li>
+                        </ul>
+                    </div>
+                    <div class="column">
+                        <h3>Como Apoiar</h3>
+                        <ul>
+                            <li>Ambientes calmos com estímulos controlados</li>
+                            <li>Comunicação clara e direta</li>
+                            <li>Respeito às necessidades sensoriais</li>
+                            <li>Valorização dos interesses especiais</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="tip-box">
+                    <p><strong>Dica:</strong> Ambientes excessivamente coloridos ou barulhentos podem ser angustiantes para pessoas autistas. Fluxos previsíveis ajudam na compreensão.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção TDAH -->
+        <section id="adhd" class="content-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>TDAH (Transtorno de Déficit de Atenção/Hiperatividade)</h2>
+                    <div class="section-actions">
+                        <button class="section-read-aloud" aria-label="Ler esta seção em voz alta">🔊 Ler</button>
+                    </div>
+                </div>
+                <p>O TDAH afeta a capacidade de manter o foco, controlar impulsos e regular os níveis de atividade.</p>
+                
+                <div class="info-grid">
+                    <div class="grid-item">
+                        <h3>Desafios</h3>
+                        <ul>
+                            <li>Dificuldade em manter a atenção</li>
+                            <li>Distração por estímulos externos</li>
+                            <li>Impulsividade</li>
+                            <li>Dificuldade com organização</li>
+                        </ul>
+                    </div>
+                    <div class="grid-item">
+                        <h3>Pontos Fortes</h3>
+                        <ul>
+                            <li>Criatividade e pensamento divergente</li>
+                            <li>Capacidade de hiperfoco em interesses</li>
+                            <li>Entusiasmo e energia</li>
+                            <li>Resolução criativa de problemas</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="tip-box">
+                    <p><strong>Dica de Design:</strong> Interfaces limpas, com poucos elementos concorrentes e textos divididos em partes curtas facilitam a atenção. Evite pop-ups, vídeos automáticos e muitos links.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Outras Condições -->
+        <section id="other-conditions" class="content-section alt-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Outras Condições Neurodivergentes</h2>
+                    <div class="section-actions">
+                        <button class="section-read-aloud" aria-label="Ler esta seção em voz alta">🔊 Ler</button>
+                    </div>
+                </div>
+                
+                <div class="condition-cards">
+                    <div class="condition-card">
+                        <div class="card-icon" aria-hidden="true">📖</div>
+                        <h3>Dislexia</h3>
+                        <p>Dificuldade com leitura e processamento de texto. Beneficia-se de fontes claras, espaçamento adequado e materiais multimodais.</p>
+                        <ul>
+                            <li>Use fontes sans-serif como Arial ou Comic Neue</li>
+                            <li>Evite texto justificado</li>
+                            <li>Ofereça áudio como alternativa</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="condition-card">
+                        <div class="card-icon" aria-hidden="true">🤲</div>
+                        <h3>Dispráxia</h3>
+                        <p>Dificuldades com coordenação motora e planejamento de movimentos. Afeta a escrita, organização e atividades físicas.</p>
+                        <ul>
+                            <li>Forneça alternativas à escrita manual</li>
+                            <li>Simplifique tarefas motoras complexas</li>
+                            <li>Dê tempo adicional para atividades</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="condition-card">
+                        <div class="card-icon" aria-hidden="true">👂</div>
+                        <h3>Transtorno do Processamento Sensorial</h3>
+                        <p>Dificuldade em processar informações sensoriais (som, tato, paladar, etc.). Pode resultar em sobrecarga sensorial.</p>
+                        <ul>
+                            <li>Ofereça ambientes com estímulos controlados</li>
+                            <li>Respeite sensibilidades individuais</li>
+                            <li>Permita pausas sensoriais quando necessário</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Recursos -->
+        <section id="resources" class="content-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Recursos e Apoio</h2>
+                    <div class="section-actions">
+                        <button class="section-read-aloud" aria-label="Ler esta seção em voz alta">🔊 Ler</button>
+                    </div>
+                </div>
+                
+                <div class="resource-list">
+                    <div class="resource-item">
+                        <h3>Para Indivíduos Neurodivergentes</h3>
+                        <ul>
+                            <li>Comunidades online de apoio</li>
+                            <li>Terapias e estratégias de adaptação</li>
+                            <li>Ferramentas de organização e produtividade</li>
+                            <li>Grupos de apoio locais</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resource-item">
+                        <h3>Para Familiares e Amigos</h3>
+                        <ul>
+                            <li>Educação sobre neurodiversidade</li>
+                            <li>Estratégias de comunicação eficaz</li>
+                            <li>Grupos de apoio para cuidadores</li>
+                            <li>Recursos para advocacia</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resource-item">
+                        <h3>Para Educadores e Empregadores</h3>
+                        <ul>
+                            <li>Treinamento em inclusão neurodiversa</li>
+                            <li>Adaptações razoáveis no ambiente</li>
+                            <li>Recrutamento inclusivo</li>
+                            <li>Design universal para aprendizagem</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="highlight-box">
+                    <p>Lembre-se: Um design de site inclusivo não beneficia apenas pessoas com autismo ou TDAH, mas melhora a experiência de todos os usuários.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Botão Voltar ao Topo -->
+    <button id="back-to-top" class="back-to-top" aria-label="Voltar ao topo da página">
+        <span class="back-to-top-icon" aria-hidden="true">↑</span>
+    </button>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Neurodiversidade</h3>
+                    <p>Um site inclusivo sobre neurodivergências, criado com acessibilidade em mente.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#neurodiversity">Neurodiversidade</a></li>
+                        <li><a href="#autism">Autismo</a></li>
+                        <li><a href="#adhd">TDAH</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Recursos</h3>
+                    <ul>
+                        <li><a href="#resources">Apoio</a></li>
+                        <li><a href="#" id="print-page">Imprimir Página</a></li>
+                        <li><a href="#" id="text-only">Versão Texto</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Site Inclusivo sobre Neurodivergências. Todos os direitos reservados.</p>
+                <p>Este site segue as diretrizes de acessibilidade WCAG 2.1.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Máscara de Leitura (será posicionada via JS) -->
+    <div id="reading-mask-overlay" class="reading-mask-overlay" aria-hidden="true"></div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
